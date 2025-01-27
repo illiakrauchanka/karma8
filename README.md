@@ -55,10 +55,10 @@ for server in $SERVERS; do
 done
 ```
 ## Question 3
-fail2ban conf file:
-maxretry = 60: max error count before block
-findtime = 180: time window for make a count (3 min)
-bantime = 2700: time to block (45 min)
+fail2ban conf file:  
+>maxretry = 60: max error count before block   
+findtime = 180: time window for make a count (3 min)  
+bantime = 2700: time to block (45 min)    
 
 `/etc/fail2ban/jail.d/nginx.conf`:
 ```ini  
