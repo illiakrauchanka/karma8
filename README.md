@@ -78,30 +78,8 @@ parse errors 403 (access forbidden) and 410 (gone) in `/etc/fail2ban/filter.d/ng
 [Definition]
 failregex = ^\[error\] \d+#\d+: \*\d+ (?:access forbidden|gone), client: <HOST>, server: \S+, request: "\S+ \S+ HTTP/\d+\.\d+", host: "\S+"(?:, referrer: "\S+")?$
 ```
-```fail2ban-client status nginx-errors```
+`fail2ban-client status nginx-errors`
 
-OR  
-Nginx + GeoIP   
-```bash
-http {
-    limit_req_zone $binary_remote_addr zone=error_zone:10m rate=60r/m;
-
-    server {
-        listen 80;
-        server_name your_domain.com;
-
-        location / {
-            limit_req zone=error_zone burst=60 nodelay;
-
-            error_page 403 410 @block;
-        }
-
-        location @block {
-            return 403 "You are blocked for 45 minutes.";
-        }
-    }
-}
-```
 ## Question 4
 inventory.ini:  
 ```ini
